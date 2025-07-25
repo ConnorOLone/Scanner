@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Scanner.Views.TrackBoxMenuPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Track Box Menu"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource Gray100}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                BackgroundColor="{StaticResource Primary}"
+                Padding="0,25,0,20">
+            <Border.Shadow>
+                <Shadow Brush="{StaticResource Black}"
+                        Offset="0,2"
+                        Radius="8"
+                        Opacity="0.1" />
+            </Border.Shadow>
+            
+            <Grid Margin="24,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        x:Name="BackButton"
+                        Text="← Back"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource White}"
+                        FontSize="16"
+                        Clicked="OnBackClicked" />
+
+                <StackLayout Grid.Column="1" 
+                             Spacing="4"
+                             HorizontalOptions="Start"
+                             Margin="16,0,0,0">
+                    <Label Text="Track Box"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource White}" />
+                    <Label Text="Manage box movements and locations"
+                           FontSize="14"
+                           TextColor="{StaticResource White}"
+                           Opacity="0.9" />
+                </StackLayout>
+            </Grid>
+        </Border>
+
+        <!-- Content -->
+        <ScrollView Grid.Row="1" Padding="24">
+            <StackLayout Spacing="32">
+                <!-- Box Management Options -->
+                <StackLayout Spacing="16">
+                    <Label Text="Box Management Options"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Gray600}"
+                           Margin="0,0,0,8" />
+
+                    <!-- Move Box Card -->
+                    <Border BackgroundColor="{StaticResource White}"
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                            Padding="24">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="{StaticResource Black}"
+                                    Offset="0,2"
+                                    Radius="8"
+                                    Opacity="0.08" />
+                        </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMoveBoxTapped" />
+                        </Border.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    WidthRequest="60"
+                                    HeightRequest="60"
+                                    StrokeThickness="0"
+                                    Margin="0,0,20,0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="30" />
+                                </Border.StrokeShape>
+                                <Label Text="📦"
+                                       FontSize="24"
+                                       TextColor="{StaticResource White}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                            </Border>
+
+                            <StackLayout Grid.Column="1" 
+                                         Spacing="6"
+                                         VerticalOptions="Center">
+                                <Label Text="Move Box"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource Gray900}" />
+                                <Label Text="Transfer boxes between locations and storage areas"
+                                       FontSize="14"
+                                       TextColor="{StaticResource Gray500}"
+                                       LineBreakMode="WordWrap" />
+                            </StackLayout>
+
+                            <Label Grid.Column="2"
+                                   Text="→"
+                                   FontSize="20"
+                                   TextColor="{StaticResource Primary}"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Check Box Location Card -->
+                    <Border BackgroundColor="{StaticResource White}"
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                            Padding="24">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="{StaticResource Black}"
+                                    Offset="0,2"
+                                    Radius="8"
+                                    Opacity="0.08" />
+                        </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCheckBoxLocationTapped" />
+                        </Border.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="{StaticResource Secondary}"
+                                    WidthRequest="60"
+                                    HeightRequest="60"
+                                    StrokeThickness="0"
+                                    Margin="0,0,20,0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="30" />
+                                </Border.StrokeShape>
+                                <Label Text="📍"
+                                       FontSize="24"
+                                       TextColor="{StaticResource White}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                            </Border>
+
+                            <StackLayout Grid.Column="1" 
+                                         Spacing="6"
+                                         VerticalOptions="Center">
+                                <Label Text="Check Box Location"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource Gray900}" />
+                                <Label Text="Find current location and status of any box"
+                                       FontSize="14"
+                                       TextColor="{StaticResource Gray500}"
+                                       LineBreakMode="WordWrap" />
+                            </StackLayout>
+
+                            <Label Grid.Column="2"
+                                   Text="→"
+                                   FontSize="20"
+                                   TextColor="{StaticResource Secondary}"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </StackLayout>
+
+                <!-- Quick Stats Card -->
+                <Border BackgroundColor="{StaticResource White}"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        Padding="24">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="{StaticResource Black}"
+                                Offset="0,2"
+                                Radius="8"
+                                Opacity="0.08" />
+                    </Border.Shadow>
+
+                    <StackLayout Spacing="16">
+                        <Label Text="📊 Box Statistics"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource Gray900}" />
+
+                        <Grid ColumnDefinitions="*,*" 
+                              RowDefinitions="Auto,Auto"
+                              ColumnSpacing="16"
+                              RowSpacing="16">
+
+                            <!-- Total Boxes -->
+                            <Border Grid.Row="0" Grid.Column="0"
+                                    BackgroundColor="{StaticResource PrimaryLight}"
+                                    Stroke="{StaticResource Primary}"
+                                    StrokeThickness="1"
+                                    Padding="16">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <StackLayout Spacing="4">
+                                    <Label Text="1,247"
+                                           FontSize="24"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource Primary}"
+                                           HorizontalOptions="Center" />
+                                    <Label Text="Total Boxes"
+                                           FontSize="12"
+                                           TextColor="{StaticResource Primary}"
+                                           HorizontalOptions="Center" />
+                                </StackLayout>
+                            </Border>
+
+                            <!-- In Transit -->
+                            <Border Grid.Row="0" Grid.Column="1"
+                                    BackgroundColor="{StaticResource Warning}"
+                                    Stroke="Transparent"
+                                    StrokeThickness="0"
+                                    Padding="16">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <StackLayout Spacing="4">
+                                    <Label Text="89"
+                                           FontSize="24"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource White}"
+                                           HorizontalOptions="Center" />
+                                    <Label Text="In Transit"
+                                           FontSize="12"
+                                           TextColor="{StaticResource White}"
+                                           HorizontalOptions="Center" />
+                                </StackLayout>
+                            </Border>
+
+                            <!-- Available -->
+                            <Border Grid.Row="1" Grid.Column="0"
+                                    BackgroundColor="{StaticResource Success}"
+                                    Stroke="Transparent"
+                                    StrokeThickness="0"
+                                    Padding="16">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <StackLayout Spacing="4">
+                                    <Label Text="1,158"
+                                           FontSize="24"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource White}"
+                                           HorizontalOptions="Center" />
+                                    <Label Text="Available"
+                                           FontSize="12"
+                                           TextColor="{StaticResource White}"
+                                           HorizontalOptions="Center" />
+                                </StackLayout>
+                            </Border>
+
+                            <!-- Last Updated -->
+                            <Border Grid.Row="1" Grid.Column="1"
+                                    BackgroundColor="{StaticResource Gray200}"
+                                    Stroke="Transparent"
+                                    StrokeThickness="0"
+                                    Padding="16">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <StackLayout Spacing="4">
+                                    <Label x:Name="LastUpdatedLabel"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource Gray600}"
+                                           HorizontalOptions="Center" />
+                                    <Label Text="Last Updated"
+                                           FontSize="12"
+                                           TextColor="{StaticResource Gray600}"
+                                           HorizontalOptions="Center" />
+                                </StackLayout>
+                            </Border>
+                        </Grid>
+                    </StackLayout>
+                </Border>
+
+                <!-- Return to Main Menu Button -->
+                <Button x:Name="ReturnToMainButton"
+                        Text="Return to Main Menu"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource Gray600}"
+                        BorderColor="{StaticResource Gray300}"
+                        BorderWidth="1"
+                        FontSize="16"
+                        HeightRequest="48"
+                        CornerRadius="8"
+                        Clicked="OnReturnToMainClicked" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
