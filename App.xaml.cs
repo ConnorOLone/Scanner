@@ -1,22 +1,25 @@
-﻿namespace Scanner;
+﻿using Scanner.Views;
+
+namespace Scanner;
 
 public partial class App : Application
 {
+    /// <summary>
+    /// TODO:
+    /// I want to give the ability to stay logged in.
+    /// IsLoggenOn cookie should self destruct after a certain amount of time...
+    /// </summary>
     public App()
     {
         InitializeComponent();
-    }
 
-    protected override Window CreateWindow(IActivationState? activationState)
-    {
-        var shell = new AppShell();
-        var window = new Window(shell);
-        
-        window.Created += async (s, e) =>
+        if (Preferences.Get("IsLoggedOn", false))
         {
-            await shell.GoToAsync("//login");
-        };
-        
-        return window;
+            MainPage = new AppShell();
+        }
+        else
+        {
+            MainPage = new NavigationPage(new LoginPage());   
+        }
     }
 }

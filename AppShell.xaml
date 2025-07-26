@@ -4,53 +4,25 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Scanner.Views"
+    xmlns:views="clr-namespace:TrioStock.Views"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False"
     Title="Item Movement Scanner">
-
-    <ShellContent
-        Title="Login"
-        ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="login" />
-
-    <ShellContent
-        Title="Main Menu"
-        ContentTemplate="{DataTemplate local:MainMenuPage}"
-        Route="mainmenu" />
-
-    <ShellContent
-        Title="Move Item"
-        ContentTemplate="{DataTemplate local:MoveItemPage}"
-        Route="moveitem" />
-
-    <ShellContent
-        Title="Check Location"
-        ContentTemplate="{DataTemplate local:CheckLocationPage}"
-        Route="checklocation" />
-
-    <ShellContent
-        Title="Dispatch Items"
-        ContentTemplate="{DataTemplate local:DispatchItemsPage}"
-        Route="dispatchitems" />
-
-    <ShellContent
-        Title="Return Items"
-        ContentTemplate="{DataTemplate local:ReturnItemsPage}"
-        Route="returnitems" />
-
-    <ShellContent
-        Title="Track Box Menu"
-        ContentTemplate="{DataTemplate local:TrackBoxMenuPage}"
-        Route="trackboxmenu" />
-
-    <ShellContent
-        Title="Move Box"
-        ContentTemplate="{DataTemplate local:MoveBoxPage}"
-        Route="movebox" />
-
-    <ShellContent
-        Title="Check Box Location"
-        ContentTemplate="{DataTemplate local:CheckBoxLocationPage}"
-        Route="checkboxlocation" />
-
+    <TabBar  >
+        <Tab Title="Home"
+             Icon="home.png">
+            <ShellContent
+                Title="Main Menu"
+                ContentTemplate="{DataTemplate local:MainMenuPage}"
+                Route="mainmenu" />
+        </Tab>
+        <Tab Title="Settings"
+             Icon="settings.png">
+            <ShellContent ContentTemplate="{DataTemplate views:SettingsView}"
+                          Route="SettingsView" />
+            </Tab>
+    </TabBar>
+    
+    
+    
 </Shell>

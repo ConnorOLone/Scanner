@@ -18,9 +18,9 @@
                 Padding="0,25,0,20">
             <Border.Shadow>
                 <Shadow Brush="{StaticResource Black}"
-                        Offset="0,2"
-                        Radius="8"
-                        Opacity="0.1" />
+                        Offset="0,5"
+                        Radius="18"
+                        Opacity="0.4" />
             </Border.Shadow>
             
             <Grid Margin="24,0">
