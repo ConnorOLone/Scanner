@@ -1,8 +1,8 @@
 namespace Scanner.Views;
 
-public partial class CheckBoxLocationPage : ContentPage
+public partial class CheckBoxLocationView : ContentPage
 {
-    public CheckBoxLocationPage()
+    public CheckBoxLocationView()
     {
         InitializeComponent();
     }
@@ -20,7 +20,7 @@ public partial class CheckBoxLocationPage : ContentPage
 
     private async void OnSearchClicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(BoxIdEntry.Text))
+        if ( string.IsNullOrWhiteSpace(BoxIdEntry.Text) )
         {
             await DisplayAlert("Error", "Please enter a box ID to search.", "OK");
             return;
@@ -37,7 +37,7 @@ public partial class CheckBoxLocationPage : ContentPage
         await Task.Delay(1500);
 
         var random = Random.Shared;
-        
+
         var locations = new[]
         {
             ("Storage Area A - Shelf 1 - Position 3", "Ground level, easy access"),
@@ -69,7 +69,7 @@ public partial class CheckBoxLocationPage : ContentPage
 
         var location = locations[random.Next(locations.Length)];
         var status = statuses[random.Next(statuses.Length)];
-        
+
         BoxIdResultLabel.Text = BoxIdEntry.Text;
         LocationLabel.Text = location.Item1;
         LocationDetailsLabel.Text = location.Item2;

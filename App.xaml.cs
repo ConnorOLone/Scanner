@@ -1,4 +1,5 @@
-﻿using Scanner.Views;
+﻿using Scanner.Services;
+using Scanner.Views;
 
 namespace Scanner;
 
@@ -9,17 +10,10 @@ public partial class App : Application
     /// I want to give the ability to stay logged in.
     /// IsLoggenOn cookie should self destruct after a certain amount of time...
     /// </summary>
-    public App()
+    public App(IServiceProvider serviceProvider)
     {
         InitializeComponent();
 
-        if (Preferences.Get("IsLoggedOn", false))
-        {
-            MainPage = new AppShell();
-        }
-        else
-        {
-            MainPage = new NavigationPage(new LoginPage());   
-        }
+        MainPage = Preferences.Get("IsLoggedOn", false) ? (Page)serviceProvider.GetService(typeof(AppShell)) : (Page)serviceProvider.GetService(typeof(LoginView));
     }
 }

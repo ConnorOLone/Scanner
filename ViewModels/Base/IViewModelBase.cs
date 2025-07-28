@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Scanner.Services;
 
-namespace Scanner.ViewModels;
+namespace Scanner.ViewModels.Base;
 
 public interface IViewModelBase : IQueryAttributable
 {

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="Scanner.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Scanner.Views"
-    xmlns:views="clr-namespace:TrioStock.Views"
-    Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False"
-    Title="Item Movement Scanner">
-    <TabBar  >
+<Shell x:Class="Scanner.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:Scanner.Views"
+       Shell.FlyoutBehavior="Disabled"
+       Shell.NavBarIsVisible="False"
+       Title="Item Movement Scanner">
+    <TabBar>
         <Tab Title="Home"
              Icon="home.png">
-            <ShellContent
-                Title="Main Menu"
-                ContentTemplate="{DataTemplate local:MainMenuPage}"
-                Route="mainmenu" />
+            <ShellContent Title="Main Menu"
+                          ContentTemplate="{DataTemplate local:MainMenuView}"
+                          Route="mainmenu" />
+        </Tab>
+        <Tab Title="Scan"
+             Icon="scanner.png">
+            <ShellContent Title="Main Menu"
+                          ContentTemplate="{DataTemplate local:ScanView}"
+                          Route="ScanView" />
         </Tab>
         <Tab Title="Settings"
              Icon="settings.png">
-            <ShellContent ContentTemplate="{DataTemplate views:SettingsView}"
+            <ShellContent ContentTemplate="{DataTemplate local:SettingsView}"
                           Route="SettingsView" />
-            </Tab>
+        </Tab>
     </TabBar>
-    
-    
-    
 </Shell>

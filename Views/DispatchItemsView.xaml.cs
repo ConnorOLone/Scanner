@@ -2,11 +2,11 @@ using System.Collections.ObjectModel;
 
 namespace Scanner.Views;
 
-public partial class DispatchItemsPage : ContentPage
+public partial class DispatchItemsView : ContentPage
 {
     public ObservableCollection<DispatchItem> DispatchItems { get; set; }
 
-    public DispatchItemsPage()
+    public DispatchItemsView()
     {
         InitializeComponent();
         DispatchItems = new ObservableCollection<DispatchItem>();

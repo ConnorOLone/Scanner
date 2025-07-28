@@ -1,8 +1,8 @@
 namespace Scanner.Views;
 
-public partial class TrackBoxMenuPage : ContentPage
+public partial class TrackBoxMenuView : ContentPage
 {
-    public TrackBoxMenuPage()
+    public TrackBoxMenuView()
     {
         InitializeComponent();
         UpdateLastUpdatedTime();

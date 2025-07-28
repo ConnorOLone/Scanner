@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="Scanner.Views.MainMenuPage"
+<ContentPage x:Class="Scanner.Views.MainMenuView"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Main Menu"
              Shell.NavBarIsVisible="False"
              BackgroundColor="{StaticResource Gray100}">
 
-    <Grid>
+    <Grid RowSpacing="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Border Grid.Row="0" 
+        <Border Grid.Row="0"
                 BackgroundColor="{StaticResource Primary}"
                 Padding="0,25,0,20">
             <Border.Shadow>
@@ -22,14 +22,15 @@
                         Radius="18"
                         Opacity="0.4" />
             </Border.Shadow>
-            
+
             <Grid Margin="24,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <StackLayout Grid.Column="0" Spacing="4">
+                <StackLayout Grid.Column="0"
+                             Spacing="4">
                     <Label Text="Item Movement Scanner"
                            FontSize="20"
                            FontAttributes="Bold"
@@ -40,7 +41,16 @@
                            Opacity="0.9" />
                 </StackLayout>
 
-                <Image Source="fsni_logo.jpeg" HeightRequest="55" Grid.Column="1"></Image>
+                <Image Source="fsni_logo.png"
+                       HeightRequest="55"
+                       Grid.Column="1">
+                    <Image.Shadow>
+                        <Shadow Brush="{StaticResource Black}"
+                                Offset="10,5"
+                                Radius="68"
+                                Opacity="1" />
+                    </Image.Shadow>
+                </Image>
                 <!-- <Button Grid.Column="1" -->
                 <!--         x:Name="LogoutButton" -->
                 <!--         Text="Lgout" -->
@@ -57,7 +67,8 @@
         </Border>
 
         <!-- Menu Items -->
-        <ScrollView Grid.Row="1" Padding="24,24,24,0">
+        <ScrollView Grid.Row="1"
+                    Padding="24,24,24,0">
             <StackLayout Spacing="16">
                 <!-- Primary Actions -->
                 <Label Text="Primary Actions"
@@ -66,13 +77,14 @@
                        TextColor="{StaticResource Gray600}"
                        Margin="0,0,0,8" />
 
-                <Grid ColumnDefinitions="*,*" 
+                <Grid ColumnDefinitions="*,*"
                       RowDefinitions="Auto,Auto"
                       ColumnSpacing="16"
                       RowSpacing="16">
 
                     <!-- Move Item Card -->
-                    <Border Grid.Row="0" Grid.Column="0"
+                    <Border Grid.Row="0"
+                            Grid.Column="0"
                             BackgroundColor="{StaticResource White}"
                             Stroke="Transparent"
                             StrokeThickness="0"
@@ -87,7 +99,7 @@
                                     Opacity="0.08" />
                         </Border.Shadow>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnMoveItemTapped" />
+                            <TapGestureRecognizer Command="{Binding MoveItemCommand}" />
                         </Border.GestureRecognizers>
 
                         <StackLayout Spacing="12">
@@ -108,7 +120,8 @@
                     </Border>
 
                     <!-- Check Item Location Card -->
-                    <Border Grid.Row="0" Grid.Column="1"
+                    <Border Grid.Row="0"
+                            Grid.Column="1"
                             BackgroundColor="{StaticResource White}"
                             Stroke="Transparent"
                             StrokeThickness="0"
@@ -123,7 +136,7 @@
                                     Opacity="0.08" />
                         </Border.Shadow>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnCheckLocationTapped" />
+                            <TapGestureRecognizer Command="{Binding CheckLocationCommand}" />
                         </Border.GestureRecognizers>
 
                         <StackLayout Spacing="12">
@@ -144,7 +157,8 @@
                     </Border>
 
                     <!-- Dispatch Items Card -->
-                    <Border Grid.Row="1" Grid.Column="0"
+                    <Border Grid.Row="1"
+                            Grid.Column="0"
                             BackgroundColor="{StaticResource White}"
                             Stroke="Transparent"
                             StrokeThickness="0"
@@ -159,7 +173,7 @@
                                     Opacity="0.08" />
                         </Border.Shadow>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnDispatchItemsTapped" />
+                            <TapGestureRecognizer Command="{Binding DispatchItemsCommand}" />
                         </Border.GestureRecognizers>
 
                         <StackLayout Spacing="12">
@@ -180,7 +194,8 @@
                     </Border>
 
                     <!-- Return Items Card -->
-                    <Border Grid.Row="1" Grid.Column="1"
+                    <Border Grid.Row="1"
+                            Grid.Column="1"
                             BackgroundColor="{StaticResource White}"
                             Stroke="Transparent"
                             StrokeThickness="0"
@@ -195,7 +210,7 @@
                                     Opacity="0.08" />
                         </Border.Shadow>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnReturnItemsTapped" />
+                            <TapGestureRecognizer Command="{Binding ReturnItemsTappedCommand}" />
                         </Border.GestureRecognizers>
 
                         <StackLayout Spacing="12">
@@ -238,7 +253,7 @@
                                 Opacity="0.08" />
                     </Border.Shadow>
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnTrackBoxTapped" />
+                        <TapGestureRecognizer Command="{Binding TrackBoxTappedCommand}" />
                     </Border.GestureRecognizers>
 
                     <Grid ColumnDefinitions="Auto,*,Auto">
@@ -247,8 +262,9 @@
                                FontSize="24"
                                VerticalOptions="Center"
                                Margin="0,0,16,0" />
-                        
-                        <StackLayout Grid.Column="1" Spacing="4">
+
+                        <StackLayout Grid.Column="1"
+                                     Spacing="4">
                             <Label Text="Track Box"
                                    FontSize="16"
                                    FontAttributes="Bold"

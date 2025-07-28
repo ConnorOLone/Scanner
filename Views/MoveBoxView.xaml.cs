@@ -1,8 +1,8 @@
 namespace Scanner.Views;
 
-public partial class MoveBoxPage : ContentPage
+public partial class MoveBoxView : ContentPage
 {
-    public MoveBoxPage()
+    public MoveBoxView()
     {
         InitializeComponent();
         BoxIdEntry.TextChanged += OnBoxIdChanged;

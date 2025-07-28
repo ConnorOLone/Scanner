@@ -2,11 +2,11 @@ using System.Collections.ObjectModel;
 
 namespace Scanner.Views;
 
-public partial class ReturnItemsPage : ContentPage
+public partial class ReturnItemsView : ContentPage
 {
     public ObservableCollection<ReturnItem> ReturnItems { get; set; }
 
-    public ReturnItemsPage()
+    public ReturnItemsView()
     {
         InitializeComponent();
         ReturnItems = new ObservableCollection<ReturnItem>();

@@ -1,15 +1,19 @@
+using Scanner.ViewModels;
+
 namespace Scanner.Views;
 
-public partial class LoginPage : ContentPage
+public partial class LoginView : ContentPage
 {
-    public LoginPage()
+    public LoginView(LoginViewModel vm)
     {
         InitializeComponent();
+
+        this.BindingContext = vm;
     }
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(UsernameEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
+        if ( string.IsNullOrWhiteSpace(UsernameEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text) )
         {
             await DisplayAlert("Error", "Please enter both username and password.", "OK");
             return;

@@ -7,14 +7,23 @@ public partial class AppShell : Shell
     public AppShell()
     {
         InitializeComponent();
-        
-        Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-        Routing.RegisterRoute(nameof(TrackBoxMenuPage), typeof(TrackBoxMenuPage));
-        Routing.RegisterRoute(nameof(MoveBoxPage), typeof(MoveBoxPage));
-        Routing.RegisterRoute(nameof(MoveItemPage), typeof(MoveItemPage));
-        Routing.RegisterRoute(nameof(CheckLocationPage), typeof(CheckLocationPage));
-        Routing.RegisterRoute(nameof(DispatchItemsPage), typeof(DispatchItemsPage));
-        Routing.RegisterRoute(nameof(ReturnItemsPage), typeof(ReturnItemsPage));
-        
+
+        Routing.RegisterRoute(nameof(LoginView), typeof(LoginView));
+        Routing.RegisterRoute(nameof(TrackBoxMenuView), typeof(TrackBoxMenuView));
+        Routing.RegisterRoute(nameof(MoveBoxView), typeof(MoveBoxView));
+        Routing.RegisterRoute(nameof(MoveItemView), typeof(MoveItemView));
+        Routing.RegisterRoute(nameof(CheckLocationView), typeof(CheckLocationView));
+        Routing.RegisterRoute(nameof(DispatchItemsView), typeof(DispatchItemsView));
+        Routing.RegisterRoute(nameof(ReturnItemsView), typeof(ReturnItemsView));
+    }
+
+    protected override void OnNavigated(ShellNavigatedEventArgs args)
+    {
+        string local = args.Current.Location.ToString();
+        if ( local.Contains("ScanView") )
+        {
+            ScanView.RecreateMainPage();
+        }
+        base.OnNavigated(args);
     }
 }

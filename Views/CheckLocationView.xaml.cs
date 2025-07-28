@@ -1,8 +1,8 @@
 namespace Scanner.Views;
 
-public partial class CheckLocationPage : ContentPage
+public partial class CheckLocationView : ContentPage
 {
-    public CheckLocationPage()
+    public CheckLocationView()
     {
         InitializeComponent();
     }
