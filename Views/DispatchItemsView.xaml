@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Border Grid.Row="0" 
+        <Border Grid.Row="0"
                 BackgroundColor="{StaticResource Primary}"
                 Padding="0,25,0,20">
             <Border.Shadow>
@@ -22,7 +22,7 @@
                         Radius="8"
                         Opacity="0.1" />
             </Border.Shadow>
-            
+
             <Grid Margin="24,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -37,7 +37,7 @@
                         FontSize="16"
                         Clicked="OnBackClicked" />
 
-                <StackLayout Grid.Column="1" 
+                <StackLayout Grid.Column="1"
                              Spacing="4"
                              HorizontalOptions="Start"
                              Margin="16,0,0,0">
@@ -54,9 +54,10 @@
         </Border>
 
         <!-- Content -->
-        <ScrollView Grid.Row="1" Padding="24">
+        <ScrollView Grid.Row="1"
+                    Padding="24">
             <StackLayout Spacing="24">
-                <!-- Dispatch Information Card -->
+                <!--Dispatch Information Card-->
                 <Border BackgroundColor="{StaticResource White}"
                         Stroke="Transparent"
                         Padding="24">
@@ -76,7 +77,7 @@
                                FontAttributes="Bold"
                                TextColor="{StaticResource Gray900}" />
 
-                        <!-- Destination Field -->
+                        <!--Destination Field-->
                         <StackLayout Spacing="8">
                             <Label Text="Destination Address"
                                    FontSize="14"
@@ -98,7 +99,7 @@
                             </Border>
                         </StackLayout>
 
-                        <!-- Carrier Selection -->
+                        <!--Carrier Selection-->
                         <StackLayout Spacing="8">
                             <Label Text="Carrier Service"
                                    FontSize="14"
@@ -129,9 +130,10 @@
                             </Border>
                         </StackLayout>
 
-                        <!-- Priority Toggle -->
+                        <!--Priority Toggle-->
                         <StackLayout Spacing="12">
-                            <StackLayout Orientation="Horizontal" Spacing="12">
+                            <StackLayout Orientation="Horizontal"
+                                         Spacing="12">
                                 <Switch x:Name="UrgentDispatchSwitch"
                                         OnColor="{StaticResource Danger}"
                                         ThumbColor="{StaticResource White}" />
@@ -149,7 +151,7 @@
                     </StackLayout>
                 </Border>
 
-                <!-- Items to Dispatch Card -->
+                <!--Items to Dispatch Card-->
                 <Border BackgroundColor="{StaticResource White}"
                         Stroke="Transparent"
                         Padding="24">
@@ -178,7 +180,7 @@
                                    TextColor="{StaticResource Primary}" />
                         </Grid>
 
-                        <!-- Add Item Section -->
+                        <!--Add Item Section-->
                         <StackLayout Spacing="8">
                             <Label Text="Add Item"
                                    FontSize="14"
@@ -225,14 +227,16 @@
                             </Grid>
                         </StackLayout>
 
-                        <!-- Items List -->
+                        <!--Items List-->
                         <CollectionView x:Name="ItemsCollectionView"
                                         ItemsSource="{Binding DispatchItems}"
                                         HeightRequest="200">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Padding="0,8" ColumnDefinitions="*,Auto">
-                                        <StackLayout Grid.Column="0" Spacing="4">
+                                    <Grid Padding="0,8"
+                                          ColumnDefinitions="*,Auto">
+                                        <StackLayout Grid.Column="0"
+                                                     Spacing="4">
                                             <Label Text="{Binding ItemId}"
                                                    FontSize="14"
                                                    FontAttributes="Bold"
@@ -256,7 +260,8 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                             <CollectionView.EmptyView>
-                                <StackLayout Padding="20" HorizontalOptions="Center">
+                                <StackLayout Padding="20"
+                                             HorizontalOptions="Center">
                                     <Label Text="📦"
                                            FontSize="48"
                                            HorizontalOptions="Center"
@@ -271,7 +276,7 @@
                     </StackLayout>
                 </Border>
 
-                <!-- Action Buttons -->
+                <!--Action Buttons-->
                 <StackLayout Spacing="12">
                     <Button x:Name="CreateDispatchButton"
                             Text="Create Dispatch Order"

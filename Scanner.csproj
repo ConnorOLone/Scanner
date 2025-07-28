@@ -92,6 +92,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="Views\Controls\HeaderView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Views\ScanView.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

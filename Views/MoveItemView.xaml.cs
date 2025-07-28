@@ -10,18 +10,18 @@ public partial class MoveItemView : ContentPage
 
     private async void OnBackClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//mainmenu");
+        await Shell.Current.GoToAsync(nameof(MainMenuView));
     }
 
     private async void OnScanClicked(object sender, EventArgs e)
     {
-        ItemIdEntry.Text = "ITEM-" + Random.Shared.Next(1000, 9999);
+        ItemIdEntry.Text = "LOCATION-" + Random.Shared.Next(1000, 9999);
         await LoadItemDetails();
     }
 
     private async void OnItemIdChanged(object sender, TextChangedEventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(e.NewTextValue) && e.NewTextValue.Length >= 3)
+        if ( !string.IsNullOrWhiteSpace(e.NewTextValue) && e.NewTextValue.Length >= 3 )
         {
             await LoadItemDetails();
         }
@@ -34,8 +34,8 @@ public partial class MoveItemView : ContentPage
     private async Task LoadItemDetails()
     {
         await Task.Delay(500);
-        
-        CurrentLocationLabel.Text = "Warehouse A - Section 12 - Shelf B3";
+
+        CurrentLocationLabel.Text = "Warehouse A - (If this is different trigger exceptional circumstances ?dropdown?)";
         CurrentLocationSection.IsVisible = true;
         DestinationCard.IsVisible = true;
         ActionButtonsSection.IsVisible = true;
@@ -50,13 +50,13 @@ public partial class MoveItemView : ContentPage
 
     private async void OnMoveItemClicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(ItemIdEntry.Text))
+        if ( string.IsNullOrWhiteSpace(ItemIdEntry.Text) )
         {
             await DisplayAlert("Error", "Please enter an item ID.", "OK");
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(DestinationEntry.Text))
+        if ( string.IsNullOrWhiteSpace(DestinationEntry.Text) )
         {
             await DisplayAlert("Error", "Please enter a destination location.", "OK");
             return;
@@ -67,9 +67,9 @@ public partial class MoveItemView : ContentPage
 
         await Task.Delay(2000);
 
-        string transferType = ExceptionalTransferSwitch.IsToggled ? "exceptional transfer" : "standard move";
-        string message = $"Item {ItemIdEntry.Text} has been successfully moved to {DestinationEntry.Text} via {transferType}.";
-        
+        // string transferType = ExceptionalTransferSwitch.IsToggled ? "exceptional transfer" : "standard move";
+        string message = $"Item {ItemIdEntry.Text} has been successfully moved to {DestinationEntry.Text} via ....";
+
         await DisplayAlert("Success", message, "OK");
 
         OnClearClicked(sender, e);
@@ -81,8 +81,8 @@ public partial class MoveItemView : ContentPage
     {
         ItemIdEntry.Text = string.Empty;
         DestinationEntry.Text = string.Empty;
-        NotesEditor.Text = string.Empty;
-        ExceptionalTransferSwitch.IsToggled = false;
+        // NotesEditor.Text = string.Empty;
+        // ExceptionalTransferSwitch.IsToggled = false;
         HideDestinationCard();
     }
 }

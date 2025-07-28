@@ -17,7 +17,7 @@
         <!-- Content -->
         <ScrollView Grid.Row="1"
                     Padding="24">
-            <StackLayout Spacing="24">
+            <VerticalStackLayout Spacing="24">
 
                 <!-- Scanning Preferences -->
                 <Border BackgroundColor="{StaticResource White}"
@@ -98,29 +98,7 @@
                                FontAttributes="Bold"
                                TextColor="{StaticResource Gray900}" />
 
-                        <!-- Server Status -->
-                        <Grid ColumnDefinitions="*,Auto">
-                            <StackLayout Grid.Column="0"
-                                         Spacing="4">
-                                <Label Text="Perseus Server Status"
-                                       FontSize="16"
-                                       TextColor="{StaticResource Gray900}" />
-                                <Label x:Name="ServerStatusLabel"
-                                       Text="Connected - Last sync: 2 minutes ago"
-                                       FontSize="12"
-                                       TextColor="{StaticResource Success}" />
-                            </StackLayout>
-                            <Button Grid.Column="1"
-                                    x:Name="TestConnectionButton"
-                                    Text="Test"
-                                    BackgroundColor="{StaticResource Secondary}"
-                                    TextColor="{StaticResource White}"
-                                    FontSize="12"
-                                    WidthRequest="60"
-                                    HeightRequest="32"
-                                    CornerRadius="6"
-                                    Clicked="OnTestConnectionClicked" />
-                        </Grid>
+                     
 
                         <!-- Offline mode -->
                         <Grid ColumnDefinitions="*,Auto">
@@ -176,7 +154,7 @@
                             <Label Grid.Row="0"
                                    Grid.Column="1"
                                    x:Name="UsernameLabel"
-                                   Text="j.smith"
+                                   Text="Connor O'Lone"
                                    FontSize="14"
                                    TextColor="{StaticResource Gray900}" />
 
@@ -190,7 +168,7 @@
                             <Label Grid.Row="1"
                                    Grid.Column="1"
                                    x:Name="UserRoleLabel"
-                                   Text="Forensic Technician"
+                                   Text="ADMIN"
                                    FontSize="14"
                                    TextColor="{StaticResource Gray900}" />
 
@@ -204,21 +182,10 @@
                             <Label Grid.Row="2"
                                    Grid.Column="1"
                                    x:Name="UserLocationLabel"
-                                   Text="Lab A - Evidence Processing"
+                                   Text="Catalyst"
                                    FontSize="14"
                                    TextColor="{StaticResource Gray900}" />
                         </Grid>
-
-                        <Button x:Name="ChangePasswordButton"
-                                Text="Change Password"
-                                BackgroundColor="Transparent"
-                                TextColor="{StaticResource Primary}"
-                                BorderColor="{StaticResource Primary}"
-                                BorderWidth="1"
-                                FontSize="14"
-                                HeightRequest="40"
-                                CornerRadius="8"
-                                Clicked="OnChangePasswordClicked" />
                     </StackLayout>
                 </Border>
 
@@ -317,7 +284,7 @@
                 </StackLayout>
 
                
-            </StackLayout>
+            </VerticalStackLayout>
         </ScrollView>
     </Grid>
 </ContentPage>

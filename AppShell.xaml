@@ -5,7 +5,9 @@
        xmlns:local="clr-namespace:Scanner.Views"
        Shell.FlyoutBehavior="Disabled"
        Shell.NavBarIsVisible="False"
-       Title="Item Movement Scanner">
+       Title="Item Movement Scanner"
+       BackgroundColor="{StaticResource Primary}">
+
     <TabBar>
         <Tab Title="Home"
              Icon="home.png">

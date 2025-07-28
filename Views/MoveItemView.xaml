@@ -3,6 +3,7 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Move Item"
+             xmlns:controls="clr-namespace:Scanner.Views.Controls"
              Shell.NavBarIsVisible="False"
              BackgroundColor="{StaticResource Gray100}">
 
@@ -12,51 +13,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <Border Grid.Row="0" 
-                BackgroundColor="{StaticResource Primary}"
-                Padding="0,25,0,20">
-            <Border.Shadow>
-                <Shadow Brush="{StaticResource Black}"
-                        Offset="0,2"
-                        Radius="8"
-                        Opacity="0.1" />
-            </Border.Shadow>
-            
-            <Grid Margin="24,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Button Grid.Column="0"
-                        x:Name="BackButton"
-                        Text="← Back"
-                        BackgroundColor="Transparent"
-                        TextColor="{StaticResource White}"
-                        FontSize="16"
-                        Clicked="OnBackClicked" />
-
-                <StackLayout Grid.Column="1" 
-                             Spacing="4"
-                             HorizontalOptions="Start"
-                             Margin="16,0,0,0">
-                    <Label Text="Move Item"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="{StaticResource White}" />
-                    <Label Text="Transfer items between locations"
-                           FontSize="14"
-                           TextColor="{StaticResource White}"
-                           Opacity="0.9" />
-                </StackLayout>
-            </Grid>
-        </Border>
-
+        <controls:HeaderView Grid.Row="0"
+                             Title="Move Items/Boxes"
+                             Subtitle="Move items between locations"></controls:HeaderView>
         <!-- Content -->
-        <ScrollView Grid.Row="1" Padding="24">
+        <ScrollView Grid.Row="1"
+                    Padding="24">
             <StackLayout Spacing="24">
-                <!-- Scan Item Card -->
+                <!-- FROM Card -->
                 <Border BackgroundColor="{StaticResource White}"
                         Stroke="Transparent"
                         Padding="24">
@@ -71,14 +35,14 @@
                     </Border.Shadow>
 
                     <StackLayout Spacing="16">
-                        <Label Text="Item Information"
+                        <Label Text="FROM Location"
                                FontSize="18"
                                FontAttributes="Bold"
                                TextColor="{StaticResource Gray900}" />
 
-                        <!-- Item ID Field -->
+                        <!-- FROM Field -->
                         <StackLayout Spacing="8">
-                            <Label Text="Item ID / Barcode"
+                            <Label Text="Location ID"
                                    FontSize="14"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource Gray600}" />
@@ -92,28 +56,41 @@
                                         <RoundRectangle CornerRadius="8" />
                                     </Border.StrokeShape>
                                     <Entry x:Name="ItemIdEntry"
-                                           Placeholder="Scan or enter item ID"
+                                           Placeholder="Scan Location ID"
                                            BackgroundColor="Transparent"
+                                           ReturnType="Go"
                                            FontSize="16"
                                            TextColor="{StaticResource Gray900}" />
                                 </Border>
                                 <Button Grid.Column="1"
                                         x:Name="ScanButton"
-                                        Text="📷"
                                         BackgroundColor="{StaticResource Secondary}"
                                         TextColor="{StaticResource White}"
-                                        FontSize="16"
+                                        FontSize="18"
                                         WidthRequest="48"
                                         HeightRequest="48"
-                                        CornerRadius="8"
+                                        CornerRadius="12"
                                         Padding="0"
                                         Margin="8,0,0,0"
-                                        Clicked="OnScanClicked" />
+                                        Clicked="OnScanClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="{StaticResource Secondary}"
+                                                Offset="0,2"
+                                                Radius="8"
+                                                Opacity="0.18" />
+                                    </Button.Shadow>
+                                    <Button.ImageSource>
+                                        <FontImageSource Glyph="&#xE8B6;"
+                                                         FontFamily="MaterialIcons"
+                                                         Size="28"
+                                                         Color="{StaticResource White}" />
+                                    </Button.ImageSource>
+                                </Button>
                             </Grid>
                         </StackLayout>
 
                         <!-- Current Location Display -->
-                        <StackLayout x:Name="CurrentLocationSection" 
+                        <StackLayout x:Name="CurrentLocationSection"
                                      Spacing="8"
                                      IsVisible="False">
                             <Label Text="Current Location"
@@ -154,7 +131,7 @@
                     </Border.Shadow>
 
                     <StackLayout Spacing="16">
-                        <Label Text="Move Destination"
+                        <Label Text="TO Location"
                                FontSize="18"
                                FontAttributes="Bold"
                                TextColor="{StaticResource Gray900}" />
@@ -165,24 +142,51 @@
                                    FontSize="14"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource Gray600}" />
-                            <Border BackgroundColor="{StaticResource Gray100}"
-                                    Stroke="{StaticResource Gray300}"
-                                    StrokeThickness="1"
-                                    Padding="16,12">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="8" />
-                                </Border.StrokeShape>
-                                <Entry x:Name="DestinationEntry"
-                                       Placeholder="Enter destination location"
-                                       BackgroundColor="Transparent"
-                                       FontSize="16"
-                                       TextColor="{StaticResource Gray900}" />
-                            </Border>
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Border BackgroundColor="{StaticResource Gray100}"
+                                        Stroke="{StaticResource Gray300}"
+                                        StrokeThickness="1"
+                                        Padding="16,12">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="8" />
+                                    </Border.StrokeShape>
+                                    <Entry x:Name="DestinationEntry"
+                                           Placeholder="Enter destination location"
+                                           BackgroundColor="Transparent"
+                                           FontSize="16"
+                                           TextColor="{StaticResource Gray900}" />
+                                </Border>
+                                <Button Grid.Column="1"
+                                        x:Name="DestinationScanButton"
+                                        BackgroundColor="{StaticResource Secondary}"
+                                        TextColor="{StaticResource White}"
+                                        FontSize="18"
+                                        WidthRequest="48"
+                                        HeightRequest="48"
+                                        CornerRadius="12"
+                                        Padding="0"
+                                        Margin="8,0,0,0"
+                                        Clicked="OnScanClicked">
+                                    <Button.Shadow>
+                                        <Shadow Brush="{StaticResource Secondary}"
+                                                Offset="0,2"
+                                                Radius="8"
+                                                Opacity="0.18" />
+                                    </Button.Shadow>
+                                    <Button.ImageSource>
+                                        <FontImageSource Glyph="&#xE8B6;"
+                                                         FontFamily="MaterialIcons"
+                                                         Size="28"
+                                                         Color="{StaticResource White}" />
+                                    </Button.ImageSource>
+                                </Button>
+                            </Grid>
                         </StackLayout>
 
                         <!-- Exceptional Transfer Toggle -->
-                        <StackLayout Spacing="12">
-                            <StackLayout Orientation="Horizontal" Spacing="12">
+                        <!--<StackLayout Spacing="12">
+                            <StackLayout Orientation="Horizontal"
+                                         Spacing="12">
                                 <Switch x:Name="ExceptionalTransferSwitch"
                                         OnColor="{StaticResource Warning}"
                                         ThumbColor="{StaticResource White}" />
@@ -196,10 +200,10 @@
                                    FontSize="12"
                                    TextColor="{StaticResource Gray500}"
                                    Margin="44,0,0,0" />
-                        </StackLayout>
+                        </StackLayout>-->
 
                         <!-- Notes Field -->
-                        <StackLayout Spacing="8">
+                        <!--<StackLayout Spacing="8">
                             <Label Text="Notes (Optional)"
                                    FontSize="14"
                                    FontAttributes="Bold"
@@ -218,16 +222,16 @@
                                         FontSize="14"
                                         TextColor="{StaticResource Gray900}" />
                             </Border>
-                        </StackLayout>
+                        </StackLayout>-->
                     </StackLayout>
                 </Border>
 
                 <!-- Action Buttons -->
-                <StackLayout x:Name="ActionButtonsSection" 
+                <StackLayout x:Name="ActionButtonsSection"
                              Spacing="12"
                              IsVisible="False">
                     <Button x:Name="MoveItemButton"
-                            Text="Move Item"
+                            Text="Start Scanning"
                             BackgroundColor="{StaticResource Primary}"
                             TextColor="{StaticResource White}"
                             FontSize="16"
